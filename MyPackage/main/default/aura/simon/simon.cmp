@@ -8,5 +8,5 @@
             <div class="game-btn btn-4" data-id="4" onclick="{!c.onGameBtnClick}"></div>
         </div>
         <div class="start-btn" onclick="{!c.onGameStartClick}">Start!</div>
-    </div>
+    </div> 
 </aura:component>	
