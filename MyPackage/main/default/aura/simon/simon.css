@@ -1,0 +1,32 @@
+.THIS.game-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.THIS .game-btn-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.THIS .game-btn {
+    width: 100%;
+    height: 100px;
+}
+.THIS .btn-1 {
+    background-color: red;
+}
+
+.THIS .btn-2 {
+    background-color: green;
+}
+
+.THIS .btn-3 {
+    background-color: blue;
+}
+
+.THIS .btn-4 {
+    background-color: yellow;
+}
+
+.THIS .start-btn {
+    padding: 2px;
+    border: 1px solid black;
+}

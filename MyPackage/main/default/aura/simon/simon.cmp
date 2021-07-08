@@ -1,0 +1,12 @@
+<aura:component controller="SimonApexController" implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="gameId" type="String"></aura:attribute>
+    <div class="game-wrapper">
+        <div class="game-btn-group">
+            <div class="game-btn btn-1" data-id="1" onclick="{!c.onGameBtnClick}"></div>
+            <div class="game-btn btn-2" data-id="2" onclick="{!c.onGameBtnClick}"></div>
+            <div class="game-btn btn-3" data-id="3" onclick="{!c.onGameBtnClick}"></div>
+            <div class="game-btn btn-4" data-id="4" onclick="{!c.onGameBtnClick}"></div>
+        </div>
+        <div class="start-btn" onclick="{!c.onGameStartClick}">Start!</div>
+    </div>
+</aura:component>	

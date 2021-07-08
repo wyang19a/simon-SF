@@ -1,0 +1,15 @@
+{
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#d12229",
+    "titleBar.activeForeground": "#ffffff",
+    "titleBar.inactiveBackground": "#811519",
+    "titleBar.inactiveForeground": "#cccccc"
+},
+  "emmet.triggerExpansionOnTab": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/.sfdx": true
+  },
+  "salesforcedx-vscode-core.show-cli-success-msg": false
+}
