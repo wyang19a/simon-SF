@@ -1,18 +1,27 @@
-# Salesforce DX Project: Next Steps
+# Game of Simon!
+![header-image](https://imgur.com/atK8eHJ.png)
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+### Getting Started
+Install it on your own org by **[loggin in here](https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5e000000qdYpAAI)**.  
 
-## How Do You Plan to Deploy Your Changes?
+![launcher-image](https://imgur.com/iw5Jw4o.png)
+##### Search for `Game of Simon` Application from the App Launcher menu.
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+#### Or
 
-## Configure Your Salesforce DX Project
+1. Open your terminal, navigate to directory you wish to clone the project.
+2. Clone the repo by running below git command:  
+`git clone https://github.com/wyang19a/simon-SF.git`
+3. Navigate into the project directory by running `cd simon-SF/`.
+4. Open Visual Studio Code by running `code .`
+5. Authorize an org by running `sfdx force:auth:web:login`.
+6. Install the package by running `sfdx force:package:install -p 04t5e000000qdYpAAI -w 10`.
+7. Search for `Game of Simon` Application from the App Launcher menu like shown above.
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+### User stories
+- User is able to start a new game.
+- User is able to continue playing if correct.
+- User is able to restart a game if incorrect.
+- User is able to see past game results.
+- User is able to see other users' game results and compare them on a leaderboard.
 
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
