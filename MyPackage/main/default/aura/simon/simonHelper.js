@@ -56,10 +56,26 @@
     hideStartBtn : function(cmp, event) {
         document.querySelector('.start-btn').style.display = 'none'
     },
+    setMessage : function(cmp) {
+        // console.log(cmp.get('v.gameOver'))
+        // if(cmp.get('v.gameOver') == true) {
+        //     cmp.set('v.message', `Game Over! Your Score was: ${cmp.get('v.userStep')}`)
+        // } else {
+        //     cmp.set('v.message', cmp.get('v.trace').length - cmp.get('v.userStep') == 0 ? 'Good job! On to another step!' : `You have ${cmp.get('v.trace').length - cmp.get('v.userStep')} move to make.`)
+        // }        
+            cmp.set('v.message', cmp.get('v.trace').length - cmp.get('v.userStep') == 0 ? 'Good job! On to another step!' : `You have ${cmp.get('v.trace').length - cmp.get('v.userStep')} move to make.`)
+
+        // cmp.set('v.message', `You have ${cmp.get('v.trace').length - cmp.get('v.userStep') - 1} move to make.`)
+        // if (cmp.get('v.trace').length - cmp.get('v.userStep') - 1 == 0) {
+
+        // }
+        
+    },
     incrementStep : function(cmp, event) {
         let step = cmp.get('v.userStep')
         step++
         cmp.set('v.userStep', step)
+        this.setMessage(cmp)
     },
     updateUserTrace : function(cmp, event) {
         let userTrace = cmp.get('v.userTrace')
@@ -68,6 +84,8 @@
         console.log('eventtargetid', event.target.getAttribute('data-id'))
         console.log('trace[userTrace.length - 1]', trace[userTrace.length - 1])
         if (event.target.getAttribute('data-id') != trace[userTrace.length - 1]) {
+            cmp.set('v.message', `Game Over! Your Highest Streak was: ${cmp.get('v.highestStep')}`)
+            console.log('setting here ', cmp.get('v.gameOver'))
             document.querySelectorAll('.game-btn').forEach(btn => {
                 btn.classList.add('disabled')
             })
@@ -118,6 +136,7 @@
                 newTraceBtn.classList.add('blink')
                 setTimeout(function() {
                     newTraceBtn.classList.remove('blink')
+                    cmp.set('v.message', `You have ${cmp.get('v.trace').length} move to make.`)
                 }, 1000)
             }, 1000 * i)
             // newTraceBtn.classList.add('blink')
@@ -136,5 +155,6 @@
     },
     hardReset : function(cmp, event) {
         cmp.set('v.trace', [])
+        cmp.set('v.gameOver', false)
     }
 })

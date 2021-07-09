@@ -2,16 +2,22 @@
     <aura:attribute name="gameId" type="String" default=""></aura:attribute>
     <aura:attribute name="gameOver" type="Boolean" default="false"></aura:attribute>
     <aura:attribute name="currentTrace" type="String" default=""></aura:attribute>
+    <aura:attribute name="message" type="String" default=""></aura:attribute>
     <aura:attribute name="trace" type="List"></aura:attribute>
     <aura:attribute name="userTrace" type="List"></aura:attribute>
     <aura:attribute name="userStep" type="Integer" default="0"></aura:attribute>
-    <div class="game-wrapper">
-        <div class="game-btn-group">
-            <div class="game-btn btn-1 disabled" data-id="0" onclick="{!c.onGameBtnClick}"></div>
-            <div class="game-btn btn-2 disabled" data-id="1" onclick="{!c.onGameBtnClick}"></div>
-            <div class="game-btn btn-3 disabled" data-id="2" onclick="{!c.onGameBtnClick}"></div>
-            <div class="game-btn btn-4 disabled" data-id="3" onclick="{!c.onGameBtnClick}"></div>
-        </div>
-        <div class="start-btn" onclick="{!c.onGameStartClick}">Start!</div>
-    </div> 
+    <aura:attribute name="highestStep" type="Integer" default="0"></aura:attribute>
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+    <lightning:card>
+        <div class="game-wrapper">
+            <div class="message">{!v.message}</div>
+            <div class="game-btn-group">
+                <div class="game-btn btn-1 disabled" data-id="0" onclick="{!c.onGameBtnClick}"></div>
+                <div class="game-btn btn-2 disabled" data-id="1" onclick="{!c.onGameBtnClick}"></div>
+                <div class="game-btn btn-3 disabled" data-id="2" onclick="{!c.onGameBtnClick}"></div>
+                <div class="game-btn btn-4 disabled" data-id="3" onclick="{!c.onGameBtnClick}"></div>
+            </div>
+            <div class="start-btn" onclick="{!c.onGameStartClick}">Start!</div>
+        </div> 
+    </lightning:card>
 </aura:component>
