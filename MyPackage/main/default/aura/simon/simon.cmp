@@ -1,12 +1,12 @@
 <aura:component controller="SimonApexController" implements="flexipage:availableForAllPageTypes">
     <aura:attribute name="gameId" type="String" default=""></aura:attribute>
+    <aura:attribute name="gameOver" type="Boolean" default="false"></aura:attribute>
     <aura:attribute name="currentTrace" type="String" default=""></aura:attribute>
     <aura:attribute name="trace" type="List"></aura:attribute>
     <aura:attribute name="userTrace" type="List"></aura:attribute>
     <aura:attribute name="userStep" type="Integer" default="0"></aura:attribute>
     <div class="game-wrapper">
         <div class="game-btn-group">
-            <!-- <aura:if isTrue="{!v.gameId == ''}"></aura:if> -->
             <div class="game-btn btn-1 disabled" data-id="0" onclick="{!c.onGameBtnClick}"></div>
             <div class="game-btn btn-2 disabled" data-id="1" onclick="{!c.onGameBtnClick}"></div>
             <div class="game-btn btn-3 disabled" data-id="2" onclick="{!c.onGameBtnClick}"></div>

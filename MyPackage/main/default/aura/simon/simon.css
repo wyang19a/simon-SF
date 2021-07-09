@@ -3,6 +3,8 @@
     flex-direction: column;
 }
 .THIS .game-btn-group {
+    width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
@@ -40,6 +42,16 @@
     opacity: 0.5;
     pointer-events: none;
 }
+
+.THIS .game-over-message {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(103, 128, 159, 0.6);
+    top: 0;
+    left: 0;
+}
+
 .THIS .blink {
     animation: blinker 1s linear infinite;
     animation-iteration-count: 1;

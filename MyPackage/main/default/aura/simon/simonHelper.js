@@ -65,8 +65,16 @@
         let userTrace = cmp.get('v.userTrace')
         let trace = cmp.get('v.trace')
         userTrace.push(parseInt(event.target.getAttribute('data-id')))
+        console.log('eventtargetid', event.target.getAttribute('data-id'))
+        console.log('trace[userTrace.length - 1]', trace[userTrace.length - 1])
         if (event.target.getAttribute('data-id') != trace[userTrace.length - 1]) {
-            // console.log('incorrect!!!!!')
+            document.querySelectorAll('.game-btn').forEach(btn => {
+                btn.classList.add('disabled')
+            })
+            this.resetGame(cmp, event)
+            this.hardReset(cmp, event)
+            // console.log('incorrecthereEfjoiwfjaiowefjaiowj')
+            document.querySelector('.start-btn').style.display = 'block'
         } 
     },
     compareTraces : function(cmp, event) {
@@ -125,5 +133,8 @@
         // document.querySelectorAll('.game-btn').forEach(btn => {
         //     btn.classList.add('disabled')
         // })
+    },
+    hardReset : function(cmp, event) {
+        cmp.set('v.trace', [])
     }
 })
