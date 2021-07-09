@@ -30,7 +30,7 @@ Install it on your own org by logging in **[here](https://login.salesforce.com/p
 - Salesforce CRM
 - HTML, CSS, Flexbox, Grid
 - JavaScript
-- Apex
+- Apex (100% Tested)
 - Custom Object
 - Custom Lightning Application
 - Package-based Development (Unlocked)
