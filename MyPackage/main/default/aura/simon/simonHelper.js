@@ -34,6 +34,7 @@
         const currentTrace = Math.floor(Math.random() * 4) // => random Integer from 0 to 3
         cmp.set('v.currentTrace', currentTrace)
         traceList.push(currentTrace)
+        this.playTraces(cmp, event)
     },
     userTurn : function(cmp, event) {
         document.querySelectorAll('.game-btn').forEach(btn => {
@@ -48,14 +49,27 @@
         step++
         cmp.set('v.userStep', step)
     },
+    updateUserTrace : function(cmp, event) {
+        let userTrace = cmp.get('v.userTrace')
+        let trace = cmp.get('v.trace')
+        userTrace.push(parseInt(event.target.getAttribute('data-id')))
+        if (event.target.getAttribute('data-id') != trace[userTrace.length - 1]) {
+            // console.log('incorrect!!!!!')
+        } 
+    },
     compareTraces : function(cmp, event) {
         let trace = cmp.get('v.trace')
-        if (cmp.get('v.userStep') == trace.length) {
-        console.log('correct, and to next step')
-        this.initializeGame(cmp, event)
-        setTimeout(function() {
-            this.userTurn(cmp, event)
-        }, 1000)
+        console.log('trace', trace)
+        console.log('user trace', cmp.get('v.userTrace'))
+        if (JSON.stringify(cmp.get('v.userTrace')) == JSON.stringify(trace)) {
+            console.log('i"m here')
+            this.resetGame(cmp, event)
+            this.assignMove(cmp, event)
+            this.playTraces(cmp, event)
+        // this.initializeGame(cmp, event)
+        // setTimeout(function() {
+        //     this.userTurn(cmp, event)
+        // }, 1000)
     }
         // let trace = cmp.get('v.trace')
         // if (event.target.getAttribute('data-id') == trace[trace.length - 1]) {
@@ -90,5 +104,10 @@
             //     newTraceBtn.classList.remove('blink')
             // }, 1000 * i)
         }
+    },
+    resetGame : function(cmp, event) {
+        console.log('resetting steps')
+        cmp.set('v.userStep', 0)
+        cmp.set('v.userTrace', [])
     }
 })

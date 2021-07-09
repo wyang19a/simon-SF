@@ -1,10 +1,15 @@
 ({
     onGameBtnClick : function(cmp, event, helper) {
-        console.log(event.target.getAttribute('data-id'))
-        helper.incrementStep(cmp, event)
+        // console.log(event.target.getAttribute('data-id'))
         let trace = cmp.get('v.trace')
+        console.log('trace length', trace.length)
+        console.log('yoyoyo', cmp.get('v.userStep'))
+        helper.incrementStep(cmp, event)
         if (cmp.get('v.userStep') == trace.length) {
+            helper.updateUserTrace(cmp, event)
             helper.compareTraces(cmp, event)
+        } else {
+            helper.updateUserTrace(cmp, event)
         }
         // helper.assignMove(cmp, event)
     },

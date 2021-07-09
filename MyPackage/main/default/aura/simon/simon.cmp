@@ -2,6 +2,7 @@
     <aura:attribute name="gameId" type="String" default=""></aura:attribute>
     <aura:attribute name="currentTrace" type="String" default=""></aura:attribute>
     <aura:attribute name="trace" type="List"></aura:attribute>
+    <aura:attribute name="userTrace" type="List"></aura:attribute>
     <aura:attribute name="userStep" type="Integer" default="0"></aura:attribute>
     <div class="game-wrapper">
         <div class="game-btn-group">
