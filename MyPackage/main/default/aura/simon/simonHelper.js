@@ -44,7 +44,9 @@
         document.querySelector('.start-btn').style.display = 'none'
     },
     setMessage : function(cmp) {
-        cmp.set('v.message', cmp.get('v.trace').length - cmp.get('v.userStep') == 0 ? 'Good job! On to another step!' : `You have ${cmp.get('v.trace').length - cmp.get('v.userStep')} move to make.`)       
+        cmp.set('v.message', cmp.get('v.trace').length - cmp.get('v.userStep') == 0 
+                                ? 'You got it right! Next round' 
+                                : `You have ${cmp.get('v.trace').length - cmp.get('v.userStep')} move to make.`)       
     },
     incrementStep : function(cmp, event) {
         let step = cmp.get('v.userStep')
@@ -56,6 +58,7 @@
         let userTrace = cmp.get('v.userTrace')
         let trace = cmp.get('v.trace')
         userTrace.push(parseInt(event.target.getAttribute('data-id')))
+        cmp.set('v.userTrace', userTrace)
         // console.log('eventtargetid', event.target.getAttribute('data-id'))
         // console.log('trace[userTrace.length - 1]', trace[userTrace.length - 1])
         if (event.target.getAttribute('data-id') != trace[userTrace.length - 1]) {
@@ -63,6 +66,24 @@
             document.querySelectorAll('.game-btn').forEach(btn => {
                 btn.classList.add('disabled')
             })
+            console.log(cmp.get('v.trace').join(', '))
+            console.log(cmp.get('v.highestStep'))
+            // Post here
+            const postGameResult = cmp.get('c.updateGameTrace')
+            postGameResult.setParams({
+                'gameId': cmp.get('v.gameId'),
+                'trace': cmp.get('v.trace').join(', '),
+                'record': cmp.get('v.highestStep')
+            })
+            postGameResult.setCallback(this, function(response) {
+                const state = response.getState()
+                if (state === "SUCCESS") {
+                    const res = response.getReturnValue()
+                    console.log('SUCCESS!', res)
+                }
+            })
+            $A.enqueueAction(postGameResult)
+
             this.resetGame(cmp, event)
             this.hardReset(cmp, event)
             document.querySelector('.start-btn').style.display = 'block'

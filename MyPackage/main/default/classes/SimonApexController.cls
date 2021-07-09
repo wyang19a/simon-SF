@@ -6,9 +6,12 @@ public with sharing class SimonApexController {
         return newGame;
     }
     @AuraEnabled
-    public static Boolean updateGameTrace(String gameId, String trace) {
-        Move_Trace__c newTrace = new Move_Trace__c();
-        newTrace.Game__c = gameId;
-        newTrace.Trace__c = trace;
+    public static Game__c updateGameTrace(String gameId, String trace, Integer record) {
+        Game__c myGame = [SELECT Id FROM Game__c WHERE Id = :gameId LIMIT 1];
+        myGame.Move_Trace__c = trace;
+        myGame.Game_Over__c = true;
+        myGame.Record__c = record;
+        update myGame;
+        return myGame;
     }
 }
