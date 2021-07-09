@@ -44,9 +44,13 @@
         document.querySelector('.start-btn').style.display = 'none'
     },
     setMessage : function(cmp) {
-        cmp.set('v.message', cmp.get('v.trace').length - cmp.get('v.userStep') == 0 
-                                ? 'You got it right! Next round' 
-                                : `You have ${cmp.get('v.trace').length - cmp.get('v.userStep')} move to make.`)       
+        if (cmp.get('v.gameOver')) {
+            cmp.set('v.message',  `Game Over! Your Highest Streak was: ${cmp.get('v.highestStep')}`)
+        } else {
+            cmp.set('v.message', cmp.get('v.trace').length - cmp.get('v.userStep') == 0 
+                                    ? 'You got it right! Next round' 
+                                    : `You have ${cmp.get('v.trace').length - cmp.get('v.userStep')} move to make.`)       
+        }
     },
     incrementStep : function(cmp, event) {
         let step = cmp.get('v.userStep')
@@ -63,6 +67,7 @@
         // console.log('trace[userTrace.length - 1]', trace[userTrace.length - 1])
         if (event.target.getAttribute('data-id') != trace[userTrace.length - 1]) {
             cmp.set('v.message', `Game Over! Your Highest Streak was: ${cmp.get('v.highestStep')}`)
+            cmp.set('v.gameOver', true)
             document.querySelectorAll('.game-btn').forEach(btn => {
                 btn.classList.add('disabled')
             })
