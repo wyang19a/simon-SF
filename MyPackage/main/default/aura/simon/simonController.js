@@ -33,9 +33,9 @@
         helper.createNewGame(cmp, event)
         helper.initializeGame(cmp, event)
         helper.hideStartBtn(cmp, event)
-        helper.setMessage(cmp)
         setTimeout(function() {
             helper.userTurn(cmp, event)
         }, 1000)
+        helper.setMessage(cmp)
     }
 })

@@ -104,7 +104,7 @@
             this.resetGame(cmp, event)
             this.assignMove(cmp, event)
             this.playTraces(cmp, event)
-            this.userTurn(cmp, event)
+            // this.userTurn(cmp, event)
         // this.initializeGame(cmp, event)
         // setTimeout(function() {
         //     this.userTurn(cmp, event)
@@ -130,6 +130,9 @@
     },
     playTraces : function(cmp, event) {
         let trace = cmp.get('v.trace')
+        document.querySelectorAll('.game-btn').forEach(btn => {
+            btn.classList.add('disabled')
+        })
         for(let i = 0; i < trace.length; i++) {
             const newTraceBtn = document.querySelectorAll(`[data-id='${trace[i]}']`)[0]
             setTimeout(function() {
@@ -144,6 +147,11 @@
             //     newTraceBtn.classList.remove('blink')
             // }, 1000 * i)
         }
+        setTimeout(function() {
+            document.querySelectorAll('.game-btn').forEach(btn => {
+                btn.classList.remove('disabled')
+            })
+        }, 1000 * trace.length)
     },
     resetGame : function(cmp, event) {
         console.log('resetting steps')
