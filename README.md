@@ -1,5 +1,5 @@
 # Game of Simon!
-![header-image](https://imgur.com/HXt5EjN.png)
+![header-image](https://imgur.com/NwTRiVm.png)
 
 Simple Game of Simon Single Page Application(SPA) that allows users to play the game, save game history, and view record of their scores. 
 
@@ -39,10 +39,10 @@ Install it on your own org by logging in **[here](https://login.salesforce.com/p
 
 ### Screenshots  
 ##### Game in Progress
-![header-image](https://imgur.com/Eu5G9iE.png)
+![header-image](https://imgur.com/RieFRMM.png)
 
 ##### Game Over
-![header-image](https://imgur.com/P0rIZu9.png)
+![header-image](https://imgur.com/1GWsVPi.png)
 
 ## Issues
 - App does not retain User Profile configuration inside of `App Settings`.
