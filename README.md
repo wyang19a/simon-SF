@@ -4,7 +4,7 @@
 Simple Game of Simon Single Page Application(SPA) that allows users to play the game, save game history, and view record of their scores. 
 
 ## Getting Started
-Install it on your own org by logging in **[here](https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5e000000qdlSAAQ)**.  
+Install it on your own org by logging in **[here](https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5e000000qdmGAAQ)**.  
 
 ![launcher-image](https://imgur.com/iw5Jw4o.png)
 ##### Search for `Game of Simon` Application from the App Launcher menu.
@@ -17,7 +17,7 @@ Install it on your own org by logging in **[here](https://login.salesforce.com/p
 3. Navigate into the project directory by running `cd simon-SF/`.
 4. Open Visual Studio Code by running `code .`
 5. Authorize an org by running `sfdx force:auth:web:login`.
-6. Install the package by running `sfdx force:package:install -p 04t5e000000qdlSAAQ -w 10`.
+6. Install the package by running `sfdx force:package:install -p 04t5e000000qdmGAAQ -w 10`.
 7. Search for `Game of Simon` Application from the App Launcher menu like shown above.
 
 ## User stories
