@@ -9,5 +9,5 @@
         <operation>equals</operation>
         <value>1</value>
     </filters>
-    <label>Leaderboard</label>
+    <label>My Records</label>
 </ListView>
