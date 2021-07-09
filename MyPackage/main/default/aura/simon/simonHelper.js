@@ -59,21 +59,22 @@
         this.setMessage(cmp)
     },
     updateUserTrace : function(cmp, event) {
+        // get userTrace and answer trace
         let userTrace = cmp.get('v.userTrace')
         let trace = cmp.get('v.trace')
+        // push user trace, and set the attribute
         userTrace.push(parseInt(event.target.getAttribute('data-id')))
         cmp.set('v.userTrace', userTrace)
-        // console.log('eventtargetid', event.target.getAttribute('data-id'))
-        // console.log('trace[userTrace.length - 1]', trace[userTrace.length - 1])
+        
+        // if clicked data-id does not match the corresponding index in trace list,
         if (event.target.getAttribute('data-id') != trace[userTrace.length - 1]) {
+            // Game over
             cmp.set('v.message', `Game Over! Your Highest Streak was: ${cmp.get('v.highestStep')}`)
             cmp.set('v.gameOver', true)
             document.querySelectorAll('.game-btn').forEach(btn => {
                 btn.classList.add('disabled')
             })
-            console.log(cmp.get('v.trace').join(', '))
-            console.log(cmp.get('v.highestStep'))
-            // Post here
+            // Post Game Result here
             const postGameResult = cmp.get('c.updateGameTrace')
             postGameResult.setParams({
                 'gameId': cmp.get('v.gameId'),
@@ -88,7 +89,8 @@
                 }
             })
             $A.enqueueAction(postGameResult)
-
+            // once game result method is on queue,
+            // hardReset game, and renew game vars
             this.resetGame(cmp, event)
             this.hardReset(cmp, event)
             document.querySelector('.start-btn').style.display = 'block'
@@ -96,17 +98,22 @@
     },
     compareTraces : function(cmp, event) {
         let trace = cmp.get('v.trace')
+        // if two sets match,
         if (JSON.stringify(cmp.get('v.userTrace')) == JSON.stringify(trace)) {
+            // renew game vars, assign new move, and play the traces
             this.resetGame(cmp, event)
             this.assignMove(cmp, event)
             this.playTraces(cmp, event)
         }
     },
     playTraces : function(cmp, event) {
+        // get the traces,
         let trace = cmp.get('v.trace')
+        // disable game buttons while playing trace.
         document.querySelectorAll('.game-btn').forEach(btn => {
             btn.classList.add('disabled')
         })
+        // loop thru the trace, assign them `blink` css class and remove it after 1 sec, in succession
         for(let i = 0; i < trace.length; i++) {
             const newTraceBtn = document.querySelectorAll(`[data-id='${trace[i]}']`)[0]
             setTimeout(function() {
@@ -117,6 +124,7 @@
                 }, 1000)
             }, 1000 * i)
         }
+        // enable game buttons
         setTimeout(function() {
             document.querySelectorAll('.game-btn').forEach(btn => {
                 btn.classList.remove('disabled')

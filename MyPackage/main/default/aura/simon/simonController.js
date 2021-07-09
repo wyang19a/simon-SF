@@ -28,8 +28,6 @@
         // helper.assignMove(cmp, event)
     },
     onGameStartClick : function(cmp, event, helper) {
-        // Hide start button once game begins
-
         helper.createNewGame(cmp, event)
         helper.initializeGame(cmp, event)
         helper.hideStartBtn(cmp, event)
