@@ -9,6 +9,11 @@
 .THIS .game-btn {
     width: 100%;
     height: 100px;
+    cursor: pointer;
+}
+
+.THIS .game-btn:hover {
+    border: 2px solid black;
 }
 .THIS .btn-1 {
     background-color: red;
@@ -36,7 +41,8 @@
     pointer-events: none;
 }
 .THIS .blink {
-    animation: blinker 1s linear infinite;
+    animation: blinker 1s linear;
+    animation-iteration-count: 1;
 }
 
 @keyframes blinker {
