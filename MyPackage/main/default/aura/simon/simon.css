@@ -30,3 +30,17 @@
     padding: 2px;
     border: 1px solid black;
 }
+
+.THIS .disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+.THIS .blink {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}

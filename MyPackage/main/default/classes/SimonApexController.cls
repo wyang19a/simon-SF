@@ -5,4 +5,10 @@ public with sharing class SimonApexController {
         insert newGame;
         return newGame;
     }
+    @AuraEnabled
+    public static Boolean updateGameTrace(String gameId, String trace) {
+        Move_Trace__c newTrace = new Move_Trace__c();
+        newTrace.Game__c = gameId;
+        newTrace.Trace__c = trace;
+    }
 }
