@@ -9,8 +9,8 @@
     <aura:attribute name="highestStep" type="Integer" default="0"></aura:attribute>
     <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
     <lightning:card>
+        <div class="message">{!v.message}</div>
         <div class="game-wrapper">
-            <div class="message">{!v.message}</div>
             <div class="game-btn-group">
                 <div class="game-btn btn-1 disabled" data-id="0" onclick="{!c.onGameBtnClick}"></div>
                 <div class="game-btn btn-2 disabled" data-id="1" onclick="{!c.onGameBtnClick}"></div>
