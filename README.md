@@ -24,6 +24,11 @@ Install it on your own org by logging in **[here](https://login.salesforce.com/p
 - User is able to restart a game if incorrect.
 - User is able to track game history through `My Records` listview.
 
+##### Game in Progress
+![header-image](https://imgur.com/Eu5G9iE.png)
+
+##### Game Over
+![header-image](https://imgur.com/P0rIZu9.png)
 ### Issues
 - App does not retain User Profile configuration inside of `App Settings`.
 - Failing at first try will display "Correct!" instead of "Game over!".
