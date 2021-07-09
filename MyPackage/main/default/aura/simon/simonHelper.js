@@ -29,11 +29,23 @@
         // if correct, repeat
         // if not, flag.
     },
+    pickUntilNonRepeat : function(cmp, traceList) {
+        const currentTrace = Math.floor(Math.random() * 4)
+        console.log('current Trace: ', currentTrace)
+        console.log('assignd Trace: ', traceList[traceList.length - 1])
+
+        if(currentTrace != traceList[traceList.length - 1]) {
+            traceList.push(currentTrace)
+            cmp.set('v.currentTrace', currentTrace)
+        } else {
+            console.log('reassessing')
+            this.pickUntilNonRepeat(cmp, traceList)
+        }
+    },
     assignMove : function(cmp, event) {
         let traceList = cmp.get('v.trace');
-        const currentTrace = Math.floor(Math.random() * 4) // => random Integer from 0 to 3
-        cmp.set('v.currentTrace', currentTrace)
-        traceList.push(currentTrace)
+        // const currentTrace = Math.floor(Math.random() * 4) // => random Integer from 0 to 3
+        this.pickUntilNonRepeat(cmp, traceList)
         this.playTraces(cmp, event)
     },
     userTurn : function(cmp, event) {
@@ -66,6 +78,7 @@
             this.resetGame(cmp, event)
             this.assignMove(cmp, event)
             this.playTraces(cmp, event)
+            this.userTurn(cmp, event)
         // this.initializeGame(cmp, event)
         // setTimeout(function() {
         //     this.userTurn(cmp, event)
@@ -109,5 +122,8 @@
         console.log('resetting steps')
         cmp.set('v.userStep', 0)
         cmp.set('v.userTrace', [])
+        // document.querySelectorAll('.game-btn').forEach(btn => {
+        //     btn.classList.add('disabled')
+        // })
     }
 })

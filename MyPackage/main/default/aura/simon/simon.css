@@ -41,7 +41,7 @@
     pointer-events: none;
 }
 .THIS .blink {
-    animation: blinker 1s linear;
+    animation: blinker 1s linear infinite;
     animation-iteration-count: 1;
 }
 
