@@ -16,29 +16,16 @@
         cmp.set('v.currentTrace', currentTrace)
         traceList.push(currentTrace)
         this.playTraces(cmp, event)
-        // const newTraceBtn = document.querySelectorAll(`[data-id='${currentTrace}']`)[0]
-        // console.log(newTraceBtn)
-        // newTraceBtn.classList.add('blink')
-        // setTimeout(function() {
-        //     newTraceBtn.classList.remove('blink')
-        // }, 1000)
-        // choose random of 4
-        // update `Game__c` trace attribute
-        // let user choose
-        // compare with trace
-        // if correct, repeat
-        // if not, flag.
     },
     pickUntilNonRepeat : function(cmp, traceList) {
         const currentTrace = Math.floor(Math.random() * 4)
-        console.log('current Trace: ', currentTrace)
-        console.log('assignd Trace: ', traceList[traceList.length - 1])
+        // console.log('current Trace: ', currentTrace)
+        // console.log('assignd Trace: ', traceList[traceList.length - 1])
 
         if(currentTrace != traceList[traceList.length - 1]) {
             traceList.push(currentTrace)
             cmp.set('v.currentTrace', currentTrace)
         } else {
-            console.log('reassessing')
             this.pickUntilNonRepeat(cmp, traceList)
         }
     },
@@ -57,19 +44,7 @@
         document.querySelector('.start-btn').style.display = 'none'
     },
     setMessage : function(cmp) {
-        // console.log(cmp.get('v.gameOver'))
-        // if(cmp.get('v.gameOver') == true) {
-        //     cmp.set('v.message', `Game Over! Your Score was: ${cmp.get('v.userStep')}`)
-        // } else {
-        //     cmp.set('v.message', cmp.get('v.trace').length - cmp.get('v.userStep') == 0 ? 'Good job! On to another step!' : `You have ${cmp.get('v.trace').length - cmp.get('v.userStep')} move to make.`)
-        // }        
-            cmp.set('v.message', cmp.get('v.trace').length - cmp.get('v.userStep') == 0 ? 'Good job! On to another step!' : `You have ${cmp.get('v.trace').length - cmp.get('v.userStep')} move to make.`)
-
-        // cmp.set('v.message', `You have ${cmp.get('v.trace').length - cmp.get('v.userStep') - 1} move to make.`)
-        // if (cmp.get('v.trace').length - cmp.get('v.userStep') - 1 == 0) {
-
-        // }
-        
+        cmp.set('v.message', cmp.get('v.trace').length - cmp.get('v.userStep') == 0 ? 'Good job! On to another step!' : `You have ${cmp.get('v.trace').length - cmp.get('v.userStep')} move to make.`)       
     },
     incrementStep : function(cmp, event) {
         let step = cmp.get('v.userStep')
@@ -81,52 +56,25 @@
         let userTrace = cmp.get('v.userTrace')
         let trace = cmp.get('v.trace')
         userTrace.push(parseInt(event.target.getAttribute('data-id')))
-        console.log('eventtargetid', event.target.getAttribute('data-id'))
-        console.log('trace[userTrace.length - 1]', trace[userTrace.length - 1])
+        // console.log('eventtargetid', event.target.getAttribute('data-id'))
+        // console.log('trace[userTrace.length - 1]', trace[userTrace.length - 1])
         if (event.target.getAttribute('data-id') != trace[userTrace.length - 1]) {
             cmp.set('v.message', `Game Over! Your Highest Streak was: ${cmp.get('v.highestStep')}`)
-            console.log('setting here ', cmp.get('v.gameOver'))
             document.querySelectorAll('.game-btn').forEach(btn => {
                 btn.classList.add('disabled')
             })
             this.resetGame(cmp, event)
             this.hardReset(cmp, event)
-            // console.log('incorrecthereEfjoiwfjaiowefjaiowj')
             document.querySelector('.start-btn').style.display = 'block'
         } 
     },
     compareTraces : function(cmp, event) {
         let trace = cmp.get('v.trace')
-        console.log('trace', trace)
-        console.log('user trace', cmp.get('v.userTrace'))
         if (JSON.stringify(cmp.get('v.userTrace')) == JSON.stringify(trace)) {
-            console.log('i"m here')
             this.resetGame(cmp, event)
             this.assignMove(cmp, event)
             this.playTraces(cmp, event)
-            // this.userTurn(cmp, event)
-        // this.initializeGame(cmp, event)
-        // setTimeout(function() {
-        //     this.userTurn(cmp, event)
-        // }, 1000)
-    }
-        // let trace = cmp.get('v.trace')
-        // if (event.target.getAttribute('data-id') == trace[trace.length - 1]) {
-        //     if (cmp.get('v.userStep') == trace.length) {
-        //         console.log('correct, and to next step')
-        //         this.initializeGame(cmp, event)
-        //         setTimeout(function() {
-        //             this.userTurn(cmp, event)
-        //         }, 1000)
-        //     } else {
-        //         console.log('correct, but not next step yet')
-        //     }
-        //     // correct
-        //     // assign new trace, add to list and let user choose again.
-        // } else {
-        //     console.log('incorrect!')
-        //     // Game over!
-        // }
+        }
     },
     playTraces : function(cmp, event) {
         let trace = cmp.get('v.trace')
@@ -142,10 +90,6 @@
                     cmp.set('v.message', `You have ${cmp.get('v.trace').length} move to make.`)
                 }, 1000)
             }, 1000 * i)
-            // newTraceBtn.classList.add('blink')
-            // setTimeout(function(i) {
-            //     newTraceBtn.classList.remove('blink')
-            // }, 1000 * i)
         }
         setTimeout(function() {
             document.querySelectorAll('.game-btn').forEach(btn => {
@@ -154,12 +98,8 @@
         }, 1000 * trace.length)
     },
     resetGame : function(cmp, event) {
-        console.log('resetting steps')
         cmp.set('v.userStep', 0)
         cmp.set('v.userTrace', [])
-        // document.querySelectorAll('.game-btn').forEach(btn => {
-        //     btn.classList.add('disabled')
-        // })
     },
     hardReset : function(cmp, event) {
         cmp.set('v.trace', [])
